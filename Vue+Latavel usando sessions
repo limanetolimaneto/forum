@@ -1,0 +1,27 @@
+Tenho uma aplicação Vue + Laravel
+Estou enviando um objeto do Vue e recuperando no laravel 
+Após recuperar esse valor numa variável atribuo essa mesma variável a uma sessão.
+Quando tento recuperar em outra página a sessão está vazia.
+Observei que quando envio do VUe são criadas 4 sessões no diretório storage/framework/session 
+porém, todas vazias.
+
+Função que recebe o objeto do vue:-------------------- 
+public function salvarnovoaluno_API(Request $request)
+        {
+            $x = $request->nome;
+            session()->put('s', $x);
+        {
+------------------------------------------------------
+
+
+Função que exibe a sessão:--------------------------- 
+public function exibe()
+    {
+        session()->get('s');
+        $y = session('s');
+        return view('teste', compact('y'));
+    }
+------------------------------------------------------
+
+
+Fiz um teste onde, ao invés de enviar do Vue, envio de um form html, e neste caso consigo recuperar numa boa
